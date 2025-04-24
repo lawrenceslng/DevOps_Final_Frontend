@@ -1,8 +1,11 @@
 import axios from 'axios';
+import { getRuntimeConfig } from '@/config/runtimeConfig';
 
-const PRODUCT_SERVICE_URL = process.env.NEXT_PUBLIC_PRODUCT_SERVICE_URL || 'http://localhost:3003';
-const ORDER_SERVICE_URL = process.env.NEXT_PUBLIC_ORDER_SERVICE_URL || 'http://localhost:3001';
-const CART_SERVICE_URL = process.env.NEXT_PUBLIC_CART_SERVICE_URL || 'http://localhost:3002';
+const {
+  PRODUCT_SERVICE_URL,
+  ORDER_SERVICE_URL,
+  CART_SERVICE_URL,
+} = getRuntimeConfig();
 
 // Product Service
 export const productService = {
