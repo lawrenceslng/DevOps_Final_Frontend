@@ -30,11 +30,14 @@ FROM nginx:alpine as prod
 COPY --from=builder /app/out /usr/share/nginx/html
 
 # Copy template for runtime config
-COPY public/env-config.template.js /usr/share/nginx/html/env-config.template.js
+# COPY public/env-config.template.js /usr/share/nginx/html/env-config.template.js
+
+# 👇 Copy your custom NGINX config
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Inject config at container startup
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+# COPY entrypoint.sh /entrypoint.sh
+# RUN chmod +x /entrypoint.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
+# ENTRYPOINT ["/entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]
