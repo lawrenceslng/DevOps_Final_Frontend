@@ -19,7 +19,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npm run build
+RUN npm run build && cp -r .next/static/export out
 
 # -------------------------
 # Step 3: Production image (static site)
