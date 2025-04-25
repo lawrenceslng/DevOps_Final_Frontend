@@ -1,16 +1,11 @@
 import axios from 'axios';
 import { getRuntimeConfig } from '@/config/runtimeConfig';
 
-const {
-  PRODUCT_SERVICE_URL,
-  ORDER_SERVICE_URL,
-  CART_SERVICE_URL,
-} = getRuntimeConfig();
-
 // Product Service
 export const productService = {
   getAllProducts: async () => {
-    console.log(PRODUCT_SERVICE_URL)
+    const { PRODUCT_SERVICE_URL } = getRuntimeConfig(); // ✅ Now read at runtime
+    console.log(PRODUCT_SERVICE_URL);
     const response = await axios.get(`${PRODUCT_SERVICE_URL}/products`);
     return response.data;
   }
@@ -19,11 +14,11 @@ export const productService = {
 // Order Service
 export const orderService = {
   getOrders: async (email: string) => {
+    const { ORDER_SERVICE_URL } = getRuntimeConfig(); // ✅ Runtime-safe
     console.log('API Service - Getting orders for email:', email);
     console.log('API Service - Using ORDER_SERVICE_URL:', ORDER_SERVICE_URL);
     try {
       const response = await axios.get(`${ORDER_SERVICE_URL}/order?email=${email}`);
-      console.log('API Service - Orders response:', response.data);
       return response.data;
     } catch (error) {
       console.error('API Service - Error getting orders:', error);
@@ -39,13 +34,13 @@ export const orderService = {
   },
 
   createOrder: async (email: string, total_price: number) => {
+    const { ORDER_SERVICE_URL } = getRuntimeConfig(); // ✅ Runtime-safe
     console.log('API Service - Creating order:', { email, total_price });
     try {
       const response = await axios.post(`${ORDER_SERVICE_URL}/order`, {
         user_email: email,
         total_price
       });
-      console.log('API Service - Create order response:', response.data);
       return response.data;
     } catch (error) {
       console.error('API Service - Error creating order:', error);
@@ -64,11 +59,13 @@ export const orderService = {
 // Cart Service
 export const cartService = {
   getCart: async (email: string) => {
+    const { CART_SERVICE_URL } = getRuntimeConfig(); // ✅ Runtime-safe
     const response = await axios.get(`${CART_SERVICE_URL}/cart?user_email=${email}`);
     return response.data;
   },
 
   addToCart: async (email: string, productId: number, quantity: number) => {
+    const { CART_SERVICE_URL } = getRuntimeConfig(); // ✅ Runtime-safe
     const response = await axios.post(`${CART_SERVICE_URL}/cart`, {
       user_email: email,
       product_id: productId,
@@ -78,6 +75,7 @@ export const cartService = {
   },
 
   clearCart: async (email: string) => {
+    const { CART_SERVICE_URL } = getRuntimeConfig(); // ✅ Runtime-safe
     const response = await axios.post(`${CART_SERVICE_URL}/cart/clear`, {
       user_email: email
     });

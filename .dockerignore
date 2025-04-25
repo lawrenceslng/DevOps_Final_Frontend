@@ -4,3 +4,4 @@ Dockerfile
 docker-compose.yml
 .env
 .git
+public/env-config.js
