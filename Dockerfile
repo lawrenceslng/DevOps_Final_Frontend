@@ -23,7 +23,7 @@ FROM nginx:alpine as prod
 COPY --from=builder /app/out /usr/share/nginx/html
 
 # Add env-config template
-COPY public/env-config.template.js /usr/share/nginx/html/env-config.js
+COPY public/env-config.template.js /usr/share/nginx/html/env-config.template.js
 
 # Entry script to inject env vars
 COPY entrypoint.sh /entrypoint.sh
