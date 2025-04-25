@@ -19,7 +19,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npm run build && npm run export
+RUN npm run build
 
 # -------------------------
 # Step 3: Production image (static site)
