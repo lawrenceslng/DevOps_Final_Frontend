@@ -35,6 +35,8 @@ COPY --from=builder /app/out /usr/share/nginx/html
 # 👇 Copy your custom NGINX config
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
+EXPOSE 80 
+
 # Inject config at container startup
 # COPY entrypoint.sh /entrypoint.sh
 # RUN chmod +x /entrypoint.sh
