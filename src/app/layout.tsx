@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  // title: "Blue Bay - Your One-Stop Shop",
+  // title: "Blue Bay - Your One-Stop Shop", 
   // description: "Welcome to Blue Bay, your premier online shopping destination",
   // keywords: "ecommerce, online shopping, blue bay, products",
 
