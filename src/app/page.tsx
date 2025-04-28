@@ -23,8 +23,8 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-primary-light to-primary-dark p-4">
       <div className="bg-white rounded-lg shadow-xl p-8 w-full max-w-md">
-        <h1 className="text-3xl font-bold text-center mb-8 text-primary">Welcome to Blue Bay</h1>
-        {/* <h1 className="text-3xl font-bold text-center mb-8 text-primary">Welcome to Green Bay</h1> */}
+        {/* <h1 className="text-3xl font-bold text-center mb-8 text-primary">Welcome to Blue Bay</h1> */}
+        <h1 className="text-3xl font-bold text-center mb-8 text-primary">Welcome to Green Bay</h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-900 mb-2">
